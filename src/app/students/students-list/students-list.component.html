@@ -1,0 +1,8 @@
+
+<mat-nav-list>
+  <app-list-item
+    *ngFor="let student of students"
+    [student]="student"
+    (click)="onClick(student.id)">
+</app-list-item>
+</mat-nav-list>

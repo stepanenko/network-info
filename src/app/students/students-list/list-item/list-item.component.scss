@@ -1,0 +1,14 @@
+.listitem_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.listitem_name {
+  flex: 1;
+  margin: 0;
+}
+
+.listitem_span {
+  flex: 0;
+}

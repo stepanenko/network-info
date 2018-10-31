@@ -1,19 +1,17 @@
 $primary-color: #465DEF;
 $button-color: #f1823B;
-
-.registration_button_sign_up {
+.login_button_sign_up {
   float: right;
   color: white;
-  background-color: $primary-color;
+  background-color: $primary-color
 }
 
-.registration_button_sign_up[disabled] {
-  color: white;
-  background-color: $primary-color;
-  opacity: 0.5;
+.login_button_sign_up[disabled] {
+  color: $primary-color;
+  opacity: 0.3;
 }
 
-.registration_button_sign_in {
+.login_button_sign_in {
   float: left;
   background-color: $button-color;
   color: white;
@@ -34,7 +32,7 @@ $button-color: #f1823B;
   margin-bottom: 10px;
 }
 
-.registation {
+.login {
   background: #fff;
   width: 400px;
   max-width: 100%;
@@ -54,8 +52,14 @@ $button-color: #f1823B;
     margin: 0;
   }
 
-  .registation_title_container {
+  .login_title_container {
     text-align: center;
     padding-bottom: 15px;
   }
+}
+
+.login_error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  text-align: center;
 }

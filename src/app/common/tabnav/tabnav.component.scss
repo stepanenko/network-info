@@ -1,0 +1,11 @@
+$background_color : #fff;
+$font_color: #000;
+
+.tabnav_container{
+    width: 100%;
+    background-color: $background;
+        .mat-tab-link {
+            font-weight: bold;
+            color: $font;
+        }
+}

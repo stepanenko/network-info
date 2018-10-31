@@ -1,3 +1,43 @@
-<p>
-  sidebar works!
-</p>
+<mat-sidenav-container
+  autosize
+  class="sidebar__container">
+
+  <mat-sidenav
+    mode="side"
+    [opened]="opened"
+    [class.sidebar]="minimized"
+    class="sidebar">
+
+    <mat-nav-list
+      class="sidebar__navlist">
+       
+      <a
+        mat-list-item
+        class="sidebar__a"
+        *ngFor="let place of places"
+        [routerLink]="place.location"
+        routerLinkActive="sidebar__a_active">
+
+        <mat-icon
+          mat-list-icon
+          *ngIf="place.icon"
+          class="sidebar__icon">
+          {{ place.icon }}
+        </mat-icon>
+
+        <span
+          [hidden]="minimized"
+          class="sidebar__text">
+          {{ place.name }}
+        </span>
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

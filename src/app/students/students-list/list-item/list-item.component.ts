@@ -1,26 +1,22 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { StudentListItem } from '../../models/student-list-item.model';
+
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { StudentListItem } from '../../models/student-list-item.interface';
 
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss']
 })
-export class ListItemComponent implements OnInit {
+export class ListItemComponent {
 
   @Input()
   student: StudentListItem;
 
   @Output()
-  click: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  click: EventEmitter<any> = new EventEmitter<any>();
 
   onClick() {
-    this.click.emit(this.student.id);
+    this.click.emit();
   }
 
 }

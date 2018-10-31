@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Place } from 'src/app/main/models/place';
+
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
 
-  constructor() { }
+  opened = true;
 
-  ngOnInit() {
-  }
+  minimized = false;
 
+  @Input()
+  places: Place[] = []
 }

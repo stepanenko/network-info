@@ -19,4 +19,4 @@ export const configReg: AuthInterface = {
     minLenName: 5,
     minLenPassword: 8,
   };
-  
+

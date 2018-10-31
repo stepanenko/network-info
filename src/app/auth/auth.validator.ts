@@ -6,4 +6,4 @@ export const passValidator = (control: AbstractControl) => {
   const validate = (passwordValue) => passwordValue === configPasswordValue ? null : { matchPassword: true };
 
   return passControl ? validate(passControl.value) : null;
-}
+};

@@ -1,3 +1,10 @@
-<p>
-  tabnav works!
-</p>
+<div class="tabnav_container">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link
+      *ngFor="let label of labels"
+      (click) ="handleTabNavClick(label)">
+      {{label.title}}
+    </a>
+  </nav>
+</div>
+ 

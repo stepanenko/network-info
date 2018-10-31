@@ -8,8 +8,9 @@ import {
     MatInputModule,
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
-
+import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,10 @@ import { LoginComponent } from './login/login.component';
         MatCardModule,
         MatInputModule,
         RouterModule
+    ],
+    providers: [
+        AuthGuard,
+        AuthenticationService
     ]
 })
 

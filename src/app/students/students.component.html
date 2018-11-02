@@ -1,57 +1,22 @@
-<p>
-  Students component works
-</p>
+<div class="students__wrapper fullvolume">
 
-<!-- hardcoded DATA, DELETE before PUSH -->
-<app-students-list
-  [students]="[
-    {
-      id: 1,
-      name: 'Jack',
-      surname: 'Canfield',
-      group: 'ES22'
-    },
-    {
-      id: 2,
-      name: 'Tom',
-      surname: 'Daniels',
-      group: 'ES12'
-    },
-    {
-      id: 3,
-      name: 'Sarah',
-      surname: 'Parker',
-      group: 'ES22'
-    },
-    {
-      id: 4,
-      name: 'Alicia',
-      surname: 'Jackson',
-      group: 'ES32'
-    },
-    {
-      id: 1,
-      name: 'Jack',
-      surname: 'Canfield',
-      group: 'ES22'
-    },
-    {
-      id: 2,
-      name: 'Tom',
-      surname: 'Daniels',
-      group: 'ES12'
-    },
-    {
-      id: 3,
-      name: 'Sarah',
-      surname: 'Parker',
-      group: 'ES22'
-    },
-    {
-      id: 4,
-      name: 'Alicia',
-      surname: 'Jackson',
-      group: 'ES32'
-    }
-  ]">
-</app-students-list>
+  <app-students-list
+    class="students__list"
+    [students]="shortStudentsData"
+    (clickOnStudent)="studentChange$.next($event)">
+  </app-students-list>
+
+  <div class="students__right-field">
+
+    <app-tabnav
+      class="students__tabnav"
+      [labels]="tabs"
+      (tabnavClick)="tabChange$.next($event.path)">
+    </app-tabnav>
+
+    <router-outlet
+      class="students__content">
+    </router-outlet>
+
+  </div>
+</div>

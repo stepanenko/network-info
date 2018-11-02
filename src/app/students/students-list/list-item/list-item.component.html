@@ -1,8 +1,6 @@
 
-<a 
-  mat-list-item
-  (click)="onClick()">
-  <img matListAvatar src="../../../../assets/images/students-avatars/student3.png" alt="Desc 1">
+<a mat-list-item [class.active]="isActive">
+  <img matListAvatar [src]="avatar" alt="avatar">
   <h4 matLine>
     {{ student.name }} {{ student.surname }}
   </h4>

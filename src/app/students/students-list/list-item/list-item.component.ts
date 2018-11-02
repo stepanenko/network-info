@@ -1,22 +1,27 @@
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { StudentListItem } from '../../models/student-list-item.interface';
+import { StudentsService } from '../../students.service';
+
+const defaultAvatar = 'assets/images/students-avatars/default-avatar.png';
 
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss']
 })
-export class ListItemComponent {
+export class ListItemComponent implements OnInit {
 
-  @Input()
-  student: StudentListItem;
+  avatar: string = defaultAvatar;
+  @Input() isActive: boolean;
+  @Input() student: StudentListItem;
 
-  @Output()
-  click: EventEmitter<any> = new EventEmitter<any>();
+  constructor(private service: StudentsService) {}
 
-  onClick() {
-    this.click.emit();
+  ngOnInit() {
+    const av = this.service.getImage(this.student.id);
+    this.avatar = av ? av : defaultAvatar;
   }
 
 }

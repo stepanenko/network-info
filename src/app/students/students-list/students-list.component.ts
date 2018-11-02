@@ -1,5 +1,6 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+
 import { StudentListItem } from '../models/student-list-item.interface';
 
 @Component({
@@ -9,14 +10,13 @@ import { StudentListItem } from '../models/student-list-item.interface';
 })
 export class StudentsListComponent {
 
-  @Output()
-  clickOnStudent: EventEmitter<number> = new EventEmitter<number>();
+  activeStudent: StudentListItem;
+  @Input() students: StudentListItem[];
+  @Output() clickOnStudent = new EventEmitter();
 
-  @Input()
-  students: StudentListItem[]
-
-  onClick(id: number) {
-    this.clickOnStudent.emit(id);
+  onClick(student) {
+    this.activeStudent = student;
+    this.clickOnStudent.emit(student.id);
   }
 
 }

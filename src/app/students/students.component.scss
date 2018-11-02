@@ -1,0 +1,22 @@
+.fullvolume {
+  width: 100%;
+  height: 100%;
+}
+
+.students__wrapper {
+  display: flex;
+}
+
+.students__list {
+  width: 20%;
+}
+
+.students__right-field {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.students__content {
+  flex: auto;
+}

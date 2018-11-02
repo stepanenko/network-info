@@ -1,12 +1,8 @@
 
-<h2>Students List</h2>
-
-<!-- <mat-card> -->
-  <mat-nav-list>
-      <app-list-item 
-        *ngFor="let student of students"
-        [student]="student"
-        (click)="onClick(student.id)">
-      </app-list-item>
-  </mat-nav-list>
-<!-- </mat-card> -->
+<mat-nav-list class="list">
+    <app-list-item *ngFor="let student of students"
+      [student]="student"
+      (click)="onClick(student)"
+      [isActive]="activeStudent === student">
+    </app-list-item>
+</mat-nav-list>

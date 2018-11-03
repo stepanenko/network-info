@@ -1,80 +1,115 @@
 <h1 mat-dialog-title class="profile_dialog_title" mat-dialog-title>Edit student</h1>
 <mat-dialog-content>
-  <div class="profile_dialog_personal_information_wrapper">
-    <div class="full_size_form">
-      <mat-form-field>
-        <input 
-         matInput 
-         placeholder="Name" 
-         [(ngModel)]="data.name">
-      </mat-form-field>
-      <mat-form-field>
-        <input 
-         matInput 
-         placeholder="Surname" 
-         [(ngModel)]="data.surname">
-      </mat-form-field>
-      <mat-form-field>
-        <input
-         matInput 
-         placeholder="Group" 
-         [(ngModel)]="data.group">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Grade" [(value)]="data.grade">
-          <mat-option value="bachelor">bachelor</mat-option>
-          <mat-option value="master">master</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="full_size_form">
-      <mat-form-field>
-        <input
-         matInput 
-         placeholder="Email" 
-         [(ngModel)]="data.email">
-      </mat-form-field>
-      <mat-form-field>
-        <input
-         matInput 
-         placeholder="Address" 
-         [(ngModel)]="data.address">
-      </mat-form-field>
-      <mat-form-field>
-        <input
-         matInput 
-         placeholder="Phone" 
-         [(ngModel)]="data.phone">
-      </mat-form-field>
-      <mat-form-field>
-        <input
-         matInput 
-         placeholder="Birthdate" 
-         [(ngModel)]="data.birthdate">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="profile_dialog_description_wrapper full_size_form">
-    <mat-form-field>
-      <textarea
-        matInput 
-        placeholder="Description" 
-        [(ngModel)]="data.description">
-      </textarea>
-    </mat-form-field>
-  </div>
+  <form class="my-form" 
+    [formGroup]="profileDialogForm" 
+    novalidate>
+      <div class="profile_dialog_personal_information_wrapper">
+        <div class="full_size_form">
+          <mat-form-field>
+            <input
+              matInput 
+              placeholder="Name" 
+              formControlName="name">
+            <mat-error *ngIf="profileDialogForm.controls['name'].hasError('required')">
+              This field is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput 
+              placeholder="Surname" 
+              formControlName="surname">
+            <mat-error *ngIf="profileDialogForm.controls['surname'].hasError('required')">
+              This field is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput 
+              placeholder="Group" 
+              formControlName="group">
+            <mat-error *ngIf="profileDialogForm.controls['group'].hasError('required')">
+              This field is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select
+              placeholder="Grade" 
+              formControlName="grade">
+                <mat-option value="bachelor">bachelor</mat-option>
+                <mat-option value="master">master</mat-option>
+            </mat-select>           
+            <mat-error *ngIf="profileDialogForm.controls['grade'].hasError('required')">
+              This field is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+        </div>
+        <div class="full_size_form">
+          <mat-form-field>
+            <input
+              matInput 
+              placeholder="Email" 
+              formControlName="email">
+              <mat-error *ngIf="profileDialogForm.controls['email'].hasError('required')">
+                The field is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="profileDialogForm.controls['email'].hasError('email')">
+                Please enter a <strong>valid</strong> email address
+              </mat-error> 
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput 
+              placeholder="Address" 
+              formControlName="address">
+            <mat-error *ngIf="profileDialogForm.controls['address'].hasError('required')"> 
+              This field is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput 
+              placeholder="Phone" 
+              formControlName="phone">
+            <mat-error *ngIf="profileDialogForm.controls['phone'].hasError('required')"> 
+              This field is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+          <mat-form-field>
+            <input  
+              matInput [matDatepicker]="picker" 
+              placeholder="Birth date"
+              formControlName="birthdate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="profileDialogForm.controls['birthdate'].hasError('required')">
+              This field is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="profile_dialog_description_wrapper full_size_form">
+        <mat-form-field>
+          <textarea
+            matInput 
+            placeholder="Description" 
+            formControlName="description">
+          </textarea>
+        </mat-form-field>
+      </div>
+  </form>
 </mat-dialog-content>
 <div mat-dialog-actions class="profile_dialog_buttons_wrapper">
   <button
-   mat-button 
-   class="profile_dialog_button_cancel" 
-   (click)="onNoClick()">
-   Cancel
+    mat-button 
+    class="profile_dialog_button_cancel" 
+    (click)="onNoClick()">
+    Cancel
   </button>
   <button
-   mat-button 
-   class="profile_dialog_button_ok" 
-   [mat-dialog-close]="data">
-   OK
+    mat-button 
+    class="profile_dialog_button_ok" 
+    [mat-dialog-close]="profileDialogForm.value">
+    OK
   </button>
 </div>

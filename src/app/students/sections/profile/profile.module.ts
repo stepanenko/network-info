@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../profile/profile.component';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material';  
 import { MatIconModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
@@ -36,6 +36,7 @@ import { MatNativeDateModule } from '@angular/material'
   ],
   providers: [  
     MatDatepickerModule,  
+    { provide: MatDialogRef, useValue: {} },
   ],
   declarations: [
     ProfileComponent,

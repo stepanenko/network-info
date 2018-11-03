@@ -9,16 +9,10 @@
 
 .students__list {
   width: 20%;
-  // height: 100%;
-  // overflow-y: auto;
 }
 
 .students__right-field {
   flex: auto;
   display: flex;
   flex-direction: column;
-}
-
-.students__content {
-  flex: auto;
 }

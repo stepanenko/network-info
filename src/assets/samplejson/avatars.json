@@ -1,0 +1,42 @@
+[
+  {
+    "id" : 1,
+    "url" : "../../assets/images/students-avatars/student1.png"
+  },
+  {
+    "id" : 2,
+    "url" : "../../assets/images/students-avatars/student2.png"
+  },
+  {
+    "id" : 3,
+    "url" : "../../assets/images/students-avatars/student3.png"
+  },
+  {
+    "id" : 4,
+    "url" : "../../assets/images/students-avatars/student4.png"
+  },
+  {
+    "id" : 5,
+    "url" : "../../assets/images/students-avatars/student5.png"
+  },
+  {
+    "id" : 6,
+    "url" : "../../assets/images/students-avatars/student6.png"
+  },
+  {
+    "id" : 7,
+    "url" : "../../assets/images/students-avatars/student7.png"
+  },
+  {
+    "id" : 8,
+    "url" : "../../assets/images/students-avatars/student8.png"
+  },
+  {
+    "id" : 9,
+    "url" : "../../assets/images/students-avatars/student9.png"
+  },
+  {
+    "id" : 10,
+    "url" : "../../assets/images/students-avatars/student10.png"
+  }
+]

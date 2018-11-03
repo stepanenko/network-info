@@ -10,7 +10,7 @@
           <p class="profile_header_subtitle header_text" *ngIf="selectedStudent.group; else warning">Group: {{selectedStudent.group}}</p>
       </div>
       <div class="header_button_wrapper">
-        <button class="student_edit_button" mat-button><mat-icon>edit</mat-icon>Edit</button>
+        <button class="student_edit_button" mat-button (click)="onEditClick()"><mat-icon>edit</mat-icon>Edit</button>
       </div>
     </div>
     <h3 class="profile_header_subtitle">Personal information</h3>

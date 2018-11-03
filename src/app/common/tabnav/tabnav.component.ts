@@ -13,6 +13,8 @@ export class TabnavComponent {
   
   @Input() labels: HasLabel [];
 
+  @Input() selected: string | null = null;
+
   @Output() tabnavClick: EventEmitter<string> = new EventEmitter<string>();
 
   handleTabNavClick (tabnavLabel:string) {

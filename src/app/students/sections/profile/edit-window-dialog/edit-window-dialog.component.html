@@ -1,0 +1,80 @@
+<h1 mat-dialog-title class="profile_dialog_title" mat-dialog-title>Edit student</h1>
+<mat-dialog-content>
+  <div class="profile_dialog_personal_information_wrapper">
+    <div class="full_size_form">
+      <mat-form-field>
+        <input 
+         matInput 
+         placeholder="Name" 
+         [(ngModel)]="data.name">
+      </mat-form-field>
+      <mat-form-field>
+        <input 
+         matInput 
+         placeholder="Surname" 
+         [(ngModel)]="data.surname">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+         matInput 
+         placeholder="Group" 
+         [(ngModel)]="data.group">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Grade" [(value)]="data.grade">
+          <mat-option value="bachelor">bachelor</mat-option>
+          <mat-option value="master">master</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="full_size_form">
+      <mat-form-field>
+        <input
+         matInput 
+         placeholder="Email" 
+         [(ngModel)]="data.email">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+         matInput 
+         placeholder="Address" 
+         [(ngModel)]="data.address">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+         matInput 
+         placeholder="Phone" 
+         [(ngModel)]="data.phone">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+         matInput 
+         placeholder="Birthdate" 
+         [(ngModel)]="data.birthdate">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="profile_dialog_description_wrapper full_size_form">
+    <mat-form-field>
+      <textarea
+        matInput 
+        placeholder="Description" 
+        [(ngModel)]="data.description">
+      </textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions class="profile_dialog_buttons_wrapper">
+  <button
+   mat-button 
+   class="profile_dialog_button_cancel" 
+   (click)="onNoClick()">
+   Cancel
+  </button>
+  <button
+   mat-button 
+   class="profile_dialog_button_ok" 
+   [mat-dialog-close]="data">
+   OK
+  </button>
+</div>

@@ -1,4 +1,5 @@
-export interface StudentListItem{
+
+export interface StudentListItem {
     id: number;
     name: string;
     surname: string;

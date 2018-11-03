@@ -1,57 +1,6 @@
-[	{
-	"id": 1,
-	"name": "Maria",
-	"surname": "Ivanova",
-	"group": "SE41",
-	"birthdate": "04.07.1998",
-	"phone": "+380630001122",
-	"address": "Lviv, Pasternaka, 5",
-	"grade": "bachelor",
-	"description":"Lorem ipsum lalalallalalalalal",
-	"email": "mariaivanova@test.com",
-	"password": "maria98"
-	},
+[	
 	{
-	"id": 2,
-	"name": "Paraskoviya",
-	"surname": "Zamarstynivska",
-	"group": "SE42",
-	"birthdate": "20.08.1998",
-	"phone": "0630001234",
-	"address": "Lviv, Pasternaka, 10",
-	"grade": "bachelor",
-	"description":"",
-	"email": "paraskathebest@test.com",
-	"password": "paraska98"
-	},
-	{
-	"id": 3,
-	"name": "Ivan",
-	"surname": "Petrov",
-	"group": "SE11",
-	"birthdate": "04.07.1998",
-	"phone": "+380630001122",
-	"address": "Lviv, Zamarstynivska, 15",
-	"grade": "master",
-	"description":"Lorem ipsum lalalallalalalalal",
-	"email": "ivanpetrov@test.com",
-	"password": "ivanpetrov98"
-	},	
-	{
-	"id": 4,
-	"name": "Maksym",
-	"surname": "Kruts",
-	"group": "SE12",
-	"birthdate": "04.07.1998",
-	"phone": "+380630111122",
-	"address": "Lviv, ",
-	"grade": "master",
-	"description":"",
-	"email": "ivanpetrov@test.com",
-	"password": "ivanpetrov98"
-	},
-	{
-		"id": 5,
+		"id": 1,
 		"name": "Maria",
 		"surname": "Ivanova",
 		"group": "SE41",
@@ -62,9 +11,9 @@
 		"description":"Lorem ipsum lalalallalalalalal",
 		"email": "mariaivanova@test.com",
 		"password": "maria98"
-		},
-		{
-		"id": 6,
+	},
+	{
+		"id": 2,
 		"name": "Paraskoviya",
 		"surname": "Zamarstynivska",
 		"group": "SE42",
@@ -75,9 +24,9 @@
 		"description":"",
 		"email": "paraskathebest@test.com",
 		"password": "paraska98"
-		},
-		{
-		"id": 7,
+	},
+	{
+		"id": 3,
 		"name": "Ivan",
 		"surname": "Petrov",
 		"group": "SE11",
@@ -88,9 +37,9 @@
 		"description":"Lorem ipsum lalalallalalalalal",
 		"email": "ivanpetrov@test.com",
 		"password": "ivanpetrov98"
-		},	
-		{
-		"id": 8,
+	},	
+	{
+		"id": 4,
 		"name": "Maksym",
 		"surname": "Kruts",
 		"group": "SE12",
@@ -101,5 +50,83 @@
 		"description":"",
 		"email": "ivanpetrov@test.com",
 		"password": "ivanpetrov98"
-		}
+	},
+	{
+		"id": 5,
+		"name": "Igor",
+		"surname": "Hretsenko",
+		"group": "SE12",
+		"birthdate": "04.07.1998",
+		"phone": "+380630343422",
+		"address": "Lviv",
+		"grade": "master",
+		"description":"superman",
+		"email": "igor@hretsenko.com",
+		"password": "hretsenko90"
+	},
+	{
+		"id": 6,
+		"name": "Slavik",
+		"surname": "Lebedev",
+		"group": "SE41",
+		"birthdate": "04.07.1998",
+		"phone": "+380630001122",
+		"address": "Lviv, Naukova, 51",
+		"grade": "bachelor",
+		"description":"Lorem ipsum incanto",
+		"email": "oksana@lebedev.com",
+		"password": "oksanal"
+	},
+	{
+		"id": 7,
+		"name": "Oksana",
+		"surname": "Kryklyva",
+		"group": "SE42",
+		"birthdate": "20.08.1998",
+		"phone": "0630001234",
+		"address": "Lviv, Pasternaka, 10",
+		"grade": "bachelor",
+		"description": "Ballroom dancer",
+		"email": "slava@kryk.com",
+		"password": "slava88"
+	},
+	{
+		"id": 8,
+		"name": "Pavel",
+		"surname": "Zvychainy",
+		"group": "SE11",
+		"birthdate": "04.07.1998",
+		"phone": "+380630001122",
+		"address": "Lviv, Zamarstynivska, 15",
+		"grade": "master",
+		"description":"Lorem ipsum",
+		"email": "pasha@test.com",
+		"password": "pashka123"
+	},	
+	{
+		"id": 9,
+		"name": "Roselina",
+		"surname": "Doneva",
+		"group": "SE12",
+		"birthdate": "04.07.1998",
+		"phone": "+38069456122",
+		"address": "Lviv",
+		"grade": "master",
+		"description":"Hello world",
+		"email": "roselina@test.com",
+		"password": "roselina"
+	},
+	{
+		"id": 10,
+		"name": "Morten",
+		"surname": "Loewe",
+		"group": "SE32",
+		"birthdate": "04.07.1998",
+		"phone": "+380670343001",
+		"address": "Lviv",
+		"grade": "master",
+		"description":"Good boy",
+		"email": "morten@test.com",
+		"password": "mortik"
+	}
 ]

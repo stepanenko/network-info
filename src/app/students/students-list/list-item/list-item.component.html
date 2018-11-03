@@ -1,6 +1,6 @@
 
 <a mat-list-item [class.active]="isActive">
-  <img matListAvatar [src]="avatar" alt="avatar">
+  <img matListAvatar src="{{ avatar?.url || defaultAvatar }}" alt="avatar">
   <h4 matLine>
     {{ student.name }} {{ student.surname }}
   </h4>

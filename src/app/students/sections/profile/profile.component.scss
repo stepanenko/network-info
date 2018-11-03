@@ -1,6 +1,6 @@
 $primary-color: #465DEF;
-$text-color-white: #FFFFFF;
-$text-color-grey: #4D4F5C;
+$text-color-light: #FFFFFF;
+$text-color-dark: #4D4F5C;
 
 .profile_container{
     display: flex;
@@ -10,7 +10,6 @@ $text-color-grey: #4D4F5C;
 
 mat-card{
     height: 100%;
-    width: 100%;
 }
 
 .profile_header{
@@ -46,12 +45,12 @@ mat-card{
 }
 .student_edit_button{
     background-color: $primary-color;
-    color: $text-color-white;
+    color: $text-color-light;
 }
 .profile_header_title{
     flex-grow: 2;
     padding: 10px 0 10px 0;
-    color: $text-color-grey;
+    color: $text-color-dark;
     font-size: 24px;
     font-weight: bold;
 }
@@ -59,7 +58,7 @@ mat-card{
 .profile_header_subtitle{
     flex-grow: 1;
     padding: 5px 0 5px 0;
-    color: $text-color-grey;
+    color: $text-color-dark;
     font-size: 18px;
 }
 
@@ -69,7 +68,7 @@ mat-card{
 }
 .student_detail_table{
     width: 60%;
-    color: $text-color-grey;
+    color: $text-color-dark;
     font-size: 18px;
     vertical-align: middle;
 }

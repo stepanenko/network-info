@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { MainRoutingModule } from './main-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MainRoutingModule } from './main-routing.module';
   declarations: [
     MainComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    NotFoundComponent
   ],
   exports: [ MainComponent ]
 })

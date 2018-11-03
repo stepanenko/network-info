@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { Student } from '../students/models/student.interface'
-import { StudentListItem } from '../students/models/student-list-item.interface'
 import { map } from 'rxjs/operators';
 import { find, map as _map, pick } from 'lodash/fp';
+import { environment } from '../../environments/environment';
 
+import { Avatar } from './models/avatar.interface';
+import { Student } from '../students/models/student.interface';
+import { StudentListItem } from '../students/models/student-list-item.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +23,25 @@ export class StudentsService {
 
   getStudentsLessInfo(): Observable<StudentListItem[]> {
     return this.getStudents().pipe(
-      map(_map(pick(['id', 'name', 'surname', 'group'])))
-    )
+      map(_map(pick(['id', 'name', 'surname', 'group']))));
   }
 
-  getStudent(id: string): Observable<Student>{
+  getStudent(id: string): Observable<Student> {
     return this.getStudents().pipe(
-      map(find(x => x.id === parseInt(id)))
-    )
+      map(find(x => x.id === parseInt(id))));
   }
 
-  getImage(id: number){
+  getImage(id: number) {
     return `../../assets/images/students-avatars/student${id}.png`;
   }
+
+  getAvatars(): Observable<Avatar[]> {
+    return this.http.get<Avatar[]>(environment.avatarsUrl);
+  }
+
+  getAvatar(id): Observable<Avatar> {
+    return this.getAvatars()
+      .pipe(map(find(x => x.id === id)));
+  }
+
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: './assets/samplejson/students.json'  
+  baseUrl: './assets/samplejson/students.json',
+  avatarsUrl: './assets/samplejson/avatars.json'
 };
 
 /*
@@ -15,5 +16,3 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-  

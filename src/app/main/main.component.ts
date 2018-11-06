@@ -9,7 +9,7 @@ import { Place } from './models/place';
 export class MainComponent {
 
   places: Place[] = [
-    {name: 'Home',      location: '/',          icon: 'home'},
+    {name: 'Home',      location: '/home',      icon: 'home'},
     {name: 'Dashboard', location: '/dashboard', icon: 'bar_chart'},
     {name: 'Students',  location: '/students',  icon: 'school'},
     {name: 'Admin',     location: '/admin',     icon: 'perm_identity'}

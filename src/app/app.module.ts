@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { CommonModule } from '@angular/common';
 import { MainModule } from './main/main.module';
 import { StudentsModule } from './students/students.module';
+import { CommonComponentsModule } from 'src/app/common/common-components.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { StudentsModule } from './students/students.module';
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonComponentsModule
   ],
   entryComponents: [AppComponent],
   providers: [],

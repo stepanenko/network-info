@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { UnderConstructionComponent } from './under-construction.component'
+import { UnderConstructionComponent } from './under-construction.component';
 
 @NgModule({
-  imports: [ 
+  imports: [
     CommonModule,
   ],
   declarations: [ UnderConstructionComponent ],

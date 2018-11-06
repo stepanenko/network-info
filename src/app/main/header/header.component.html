@@ -1,18 +1,17 @@
 <mat-toolbar class="header__container">
-    <mat-toolbar-row>
-        <span class = "header__icon"><i class="material-icons">local_library</i></span>
-        <span class = "header__label">Student Lab 1.0</span>
-        <span class = "header__spacer"></span>
-        <p class = "header_student_login">{{ user.name }} {{ user.surname }}</p>
-        <div>
-            <a 
-            [routerLink]="['/login']">
-                <button mat-flat-button class="header_button_logout">
-                    <i class="material-icons header__icon">exit_to_app</i>
-                        Log out
-                </button>
-            </a>
-        </div>
-    </mat-toolbar-row>
+  <mat-toolbar-row>
+    <span class = "header__icon"><i class="material-icons">local_library</i></span>
+    <span class = "header__label">Student Lab 1.0</span>
+    <span class = "header__spacer"></span>
+    <p class = "header_student_login">{{ user.name }} {{ user.surname }}</p>
+    <div>
+      <a
+      [routerLink]="['/login']">
+      <button mat-flat-button class="header_button_logout">
+        <i class="material-icons header__icon">exit_to_app</i>
+        Log out
+      </button>
+    </a>
+  </div>
+</mat-toolbar-row>
 </mat-toolbar>
-  

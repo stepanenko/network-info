@@ -4,9 +4,9 @@ import { TabnavComponent } from './tabnav.component';
 import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
-  imports: [ 
+  imports: [
     CommonModule,
-    MatTabsModule  
+    MatTabsModule
   ],
   declarations: [ TabnavComponent ],
   exports: [ TabnavComponent ]

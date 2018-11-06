@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  
+
   register(data) {
     localStorage.setItem('user', JSON.stringify(data));
   }
-  
+
   logout() {
     localStorage.removeItem('currentUser');
   }

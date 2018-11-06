@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { studentsRoutes } from 'src/app/students/students-routing.module';
+import { StudentsComponent } from 'src/app/students/students.component';
+import { UnderConstructionComponent } from 'src/app/common/under-construction/under-construction.component';
+
+export const mainRoutes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home',      component: UnderConstructionComponent },
+  { path: 'dashboard', component: UnderConstructionComponent },
+  { path: 'students',  component: StudentsComponent, children: studentsRoutes },
+  { path: 'admin',     component: UnderConstructionComponent }
+];
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  exports: [ RouterModule ],
-  declarations: []
+  exports: [ RouterModule ]
 })
 export class MainRoutingModule { }

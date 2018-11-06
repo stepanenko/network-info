@@ -8,11 +8,13 @@
 }
 
 .students__list {
-  width: 20%;
 }
 
 .students__right-field {
   flex: auto;
   display: flex;
   flex-direction: column;
+}
+
+.students__list_wrapper {
 }

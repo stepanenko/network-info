@@ -108,7 +108,8 @@
   </button>
   <button
     mat-button 
-    class="profile_dialog_button_ok" 
+    class="profile_dialog_button_ok"
+    [disabled]="!profileDialogForm.valid" 
     [mat-dialog-close]="profileDialogForm.value">
     OK
   </button>

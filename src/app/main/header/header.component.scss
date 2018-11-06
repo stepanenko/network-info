@@ -14,10 +14,15 @@ $header-button-color: rgba(48, 70, 211, 0.69);
 
 .header__label,
 .header_student_login {
-  font-size: 0.7rem;
-  padding: 2rem;
+  padding: 1rem;
   color:$text-color-white;
   font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.header__label {
+  font-size: 1.3rem;
+  font-variant: all-small-caps;
 }
 
 .header__icon{
@@ -28,6 +33,10 @@ $header-button-color: rgba(48, 70, 211, 0.69);
   background-color: $header-button-color;
   font-size: 0.7rem;
   color:$text-color-white;
+}
+
+.material-icons {
+  vertical-align: middle;
 }
 
 @media only screen and (max-width: 480px) {

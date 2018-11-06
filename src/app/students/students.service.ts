@@ -28,7 +28,7 @@ export class StudentsService {
 
   getStudent(id: string): Observable<Student> {
     return this.getStudents().pipe(
-      map(find(x => x.id === parseInt(id))));
+      map(find(x => x.id === parseInt(id, 10))));
   }
 
   getImage(id: number) {

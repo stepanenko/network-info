@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  private user: {};
+  user;
 
   constructor(private authentificationService: AuthenticationService) { }
 

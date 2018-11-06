@@ -4,38 +4,44 @@ $text-color-dark: #4D4F5C;
 $button-color: #f1823B;
 
 .profile_dialog_title{
-	color: $primary-color;
-	text-align: center;
+  color: $primary-color;
+  text-align: center;
 }
 
 .profile_dialog_personal_information_wrapper{
-	display: flex;
+  display: flex;
 }
 
 .profile_dialog_description_wrapper{
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .full_size_form{
-	padding: 0 10px 0 10px;
+  padding: 0 10px 0 10px;
 }
 
 .full_size_form > *{
-	width: 100%;
+  width: 100%;
 }
 
 .profile_dialog_button_cancel{
-	background-color: $button-color;
-	color: $text-color-light;
+  background-color: $button-color;
+  color: $text-color-light;
 }
 
 .profile_dialog_button_ok{
-	background-color: $primary-color;
-	color: $text-color-light;
+  background-color: $primary-color;
+  color: $text-color-light;
+}
+
+.profile_dialog_button_ok[disabled] {
+  color: white;
+  background-color: $primary-color;
+  opacity: 0.5;
 }
 
 .profile_dialog_buttons_wrapper{
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }

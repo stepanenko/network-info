@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Student } from '../../../../students/models/student.interface'
+import { Student } from '../../../../students/models/student.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,15 +8,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './edit-window-dialog.component.html',
   styleUrls: ['./edit-window-dialog.component.scss']
 })
-export class EditWindowDialogComponent implements OnInit{
+export class EditWindowDialogComponent implements OnInit {
 
   profileDialogForm: FormGroup;
-  
+
   constructor(
     public dialogRef: MatDialogRef<EditWindowDialogComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: Student) {}
- 
+
   ngOnInit() {
     this.createForm();
   }
@@ -35,7 +35,7 @@ export class EditWindowDialogComponent implements OnInit{
       address: [this.data.address, [Validators.required]],
       phone: [this.data.phone, [Validators.required]],
       birthdate: [new Date(this.data.birthdate), [Validators.required]],
-      description: [this.data.description],        
+      description: [this.data.description],
     });
   }
 }

@@ -14,5 +14,5 @@ export class SidebarComponent {
   minimized = false;
 
   @Input()
-  places: Place[] = []
+  places: Place[] = [];
 }

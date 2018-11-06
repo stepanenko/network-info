@@ -1,22 +1,26 @@
 <div class="students__wrapper fullvolume">
 
-  <app-students-list
-    class="students__list"
-    [students]="shortStudentsData"
-    (clickOnStudent)="studentChange$.next($event)">
-  </app-students-list>
+  <div
+    class="students__list_wrapper">
+    <app-students-list
+      class="students__list"
+      [students]="shortStudentsData"
+      (clickOnStudent)="studentChange$.next($event)">
+    </app-students-list>
+  </div>
 
   <div class="students__right-field">
 
     <app-tabnav
       class="students__tabnav"
       [labels]="tabs"
+      [selected]="selectedLabel$ | async"
       (tabnavClick)="tabChange$.next($event.path)">
     </app-tabnav>
 
-    <router-outlet
-      class="students__content">
-    </router-outlet>
+    <div class="students__content">
+      <router-outlet> </router-outlet>
+    </div>
 
   </div>
 </div>

@@ -3,16 +3,16 @@ $text-color-yellow: #EECC10;
 $background-color-white: #FFFFFF;
 
 .underconstuction_container {
-  background-color: $background-color-white;
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 381px;
+  margin-top: 10%;
 }
 
 .underconstuction_img {
-  height: 80%;
   padding: 2% 10%;
+  padding-right: 0;
 }
 
 .underconstuction_text_container {

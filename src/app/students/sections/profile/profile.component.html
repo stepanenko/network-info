@@ -14,30 +14,34 @@
       </div>
     </div>
     <h3 class="profile_header_subtitle">Personal information</h3>
-    <table class="student_detail_table">
-      <tr>
-        <td><mat-icon>cake</mat-icon> Birthday</td>
-        <td *ngIf="selectedStudent.birthdate; else warning">{{selectedStudent.birthdate | date: 'MM/dd/yyyy'}}</td>
-      </tr>
-      <tr>
-        <td> <mat-icon>call</mat-icon> Phone</td>
-        <td *ngIf="selectedStudent.phone; else warning">{{selectedStudent.phone}}</td>
-      </tr>
-      <tr>
-        <td> <mat-icon>email</mat-icon> Email</td>
-        <td *ngIf="selectedStudent.email; else warning">{{selectedStudent.email}}</td>
-      </tr>
-      <tr>
-        <td> <mat-icon>location_city</mat-icon> Address</td>
-        <td *ngIf="selectedStudent.address; else warning">{{selectedStudent.address}}</td>
-      </tr>
-      <tr>
-        <td><mat-icon>info</mat-icon> Description</td>
-        <td *ngIf="selectedStudent.description; else warning">{{selectedStudent.description}}</td>
-      </tr>
-    </table>
+    <div class="student_detail_table_wrapper">
+      <table class="student_detail_table">
+        <tr>
+          <td class="profile_fixed_fields"><mat-icon>cake</mat-icon> Birthday</td>
+          <td *ngIf="selectedStudent.birthdate; else warning">{{selectedStudent.birthdate | date: 'MM/dd/yyyy'}}</td>
+        </tr>
+        <tr>
+          <td class="profile_fixed_fields"> <mat-icon>call</mat-icon> Phone</td>
+          <td *ngIf="selectedStudent.phone; else warning">{{selectedStudent.phone}}</td>
+        </tr>
+        <tr>
+          <td class="profile_fixed_fields"> <mat-icon>email</mat-icon> Email</td>
+          <td *ngIf="selectedStudent.email; else warning">{{selectedStudent.email}}</td>
+        </tr>
+        <tr>
+          <td class="profile_fixed_fields"> <mat-icon>location_city</mat-icon> Address</td>
+          <td *ngIf="selectedStudent.address; else warning">{{selectedStudent.address}}</td>
+        </tr>
+        <tr>
+          <td class="profile_fixed_fields"><mat-icon>info</mat-icon> Description</td>
+          <td *ngIf="selectedStudent.description; else warning">{{selectedStudent.description}}</td>
+        </tr>
+      </table>
+    </div>
     <ng-template #warning>
-      <p class="warning_message header_text"> Please, add info</p>
+      <div class="warning_message header_text">
+        <span> Please, add info</span>
+      </div>
     </ng-template>
   </div>
   <ng-template #load>

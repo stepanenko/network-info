@@ -1,28 +1,27 @@
 
+$scroll-color: #0000004d;
+
 .list {
   padding: 0;
-  height: 100vh;
+  height: calc(100vh - 50px);
   overflow-y: auto;
 }
 
-.list::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 6px #0000004d;
-  box-shadow: inset 0 0 6px #0000004d;
-	border-radius: 10px;
-	background-color: #F5F5F5;
+.list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px $scroll-color;
+  box-shadow: inset 0 0 6px $scroll-color;
+  border-radius: 10px;
+  background-color: #F5F5F5;
 }
 
-.list::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
+.list::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
 }
 
-.list::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px #0000004d;
-  box-shadow: inset 0 0 6px #0000004d;
-	background-color: #4359e677;
+.list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px $scroll-color;
+  box-shadow: inset 0 0 6px $scroll-color;
+  background-color: #4359e677;
 }

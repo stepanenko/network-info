@@ -11,6 +11,7 @@ import { StudentListItem } from '../models/student-list-item.interface';
 export class StudentsListComponent {
 
   activeStudent: StudentListItem;
+
   @Input() students: StudentListItem[];
   @Output() clickOnStudent = new EventEmitter();
 

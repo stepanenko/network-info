@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentsService } from './students.service';
-import { Student } from './models/student.interface';
-import { StudentListItem } from './models/student-list-item.interface';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Subject, Observable, combineLatest } from 'rxjs';
 import { find } from 'lodash/fp';
 import { map } from 'rxjs/operators';
-
+import { StudentsService } from './students.service';
 
 @Component({
   selector: 'app-students',
@@ -16,14 +13,11 @@ import { map } from 'rxjs/operators';
 export class StudentsComponent implements OnInit {
 
   constructor(
-    private service: StudentsService,
-    private router: Router) { }
-
-  shortStudentsData: StudentListItem[] = [];
+    private router: Router,
+    private route: ActivatedRoute,
+    private service: StudentsService) { }
 
   selectedLabel$: Observable<string>;
-
-  studentChange$ = new Subject<number>();
   tabChange$ = new BehaviorSubject<string>('profile');
 
   tabs = [
@@ -34,21 +28,23 @@ export class StudentsComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.service.getStudentsLessInfo()
-      .subscribe(data => { this.shortStudentsData = data; });
-
-    this.service.getStudentsLessInfo()
-      .subscribe(data => this.studentChange$.next(data[0].id));
-
-    combineLatest(this.studentChange$, this.tabChange$)
-      .subscribe(([id, tab]) => {
-        this.router.navigate(['/students', id, tab]);
-      });
+    combineLatest(this.service.studentChange$, this.tabChange$)
+    .subscribe(([id, tab]) => {
+      this.router.navigate(['/students', id, tab]);
+    });
 
     this.selectedLabel$ = this.tabChange$.pipe(
       map(path => find({path}, this.tabs).label)
     );
+
+    this.service.selectStudent(this.route.snapshot.firstChild.paramMap.get('id'));
   }
 
+  listClicked(id: string) {
+    this.service.selectStudent(id);
+  }
 
+  tabClicked(label: string) {
+    this.tabChange$.next(label);
+  }
 }

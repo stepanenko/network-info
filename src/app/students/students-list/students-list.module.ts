@@ -1,24 +1,25 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule, MatIconModule, MatTableModule, MatButtonModule } from '@angular/material';
 
 import { StudentsListComponent } from './students-list.component';
-import { ListItemComponent } from './list-item/list-item.component';
-import { MatCardModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatListModule,
-    MatCardModule
+    FormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatButtonModule
   ],
   exports: [
     StudentsListComponent
   ],
   declarations: [
-    StudentsListComponent,
-    ListItemComponent
+    StudentsListComponent
   ]
 })
 export class StudentsListModule { }

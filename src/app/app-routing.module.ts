@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { MainComponent } from 'src/app/main/main.component';
 import { AuthGuard } from './auth/guard/auth.guard';
@@ -13,7 +12,6 @@ const routes: Routes = [
     component: MainComponent,
     children: mainRoutes
   },
-  { path: 'register' , component: RegisterComponent },
   { path: 'login',     component: LoginComponent },
   { path: '404-error', component: NotFoundComponent },
   { path: '**',        redirectTo: '404-error' }

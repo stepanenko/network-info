@@ -17,9 +17,6 @@
               placeholder="First Name" 
               name="firstName" 
               formControlName="name">
-            <mat-error *ngIf="registerForm.controls['name'].hasError('minlength')">
-              First Name must contain min <strong>5</strong> symbols
-            </mat-error>  
             <mat-error *ngIf="registerForm.controls['name'].hasError('required')">
               First Name is <strong>required</strong>
             </mat-error>
@@ -34,9 +31,6 @@
               formControlName="surname">
             <mat-error *ngIf="registerForm.controls['surname'].hasError('required')">
               Last Name is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="registerForm.controls['surname'].hasError('minlength')">
-              Last Name must contain min <strong>5</strong> symbols
             </mat-error>
           </mat-form-field>
           <mat-form-field class="form-field">
@@ -65,7 +59,14 @@
               Password is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') || registerForm.controls['password'].hasError('pattern')">
-              The password must be <strong>8</strong> characters long and <strong>strong</strong>
+              The password must be 
+              <strong 
+                matTooltip="Password must be longer than 8 characters and consists minimum of 1 symbol, 1 number and 1 uppercase character">
+                strong
+                <sup>
+                  &#9733;
+                </sup>
+              </strong>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="form-field">

@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatTooltipModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './authentication.service';
-
+import { RegisterComponent } from './register/register.component';
 @NgModule({
     declarations: [
-        RegisterComponent,
         LoginComponent,
+        RegisterComponent
     ],
     imports: [
         CommonModule,
@@ -24,6 +24,7 @@ import { AuthenticationService } from './authentication.service';
         MatButtonModule,
         MatCardModule,
         MatInputModule,
+        MatTooltipModule,
         RouterModule
     ],
     providers: [

@@ -23,6 +23,9 @@
             <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
               Email is <strong>required</strong>
             </mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+              Please enter a <strong>valid</strong> email address
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="form-field">
             <mat-label>Password</mat-label>
@@ -36,13 +39,6 @@
               Password is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-          <a [routerLink]="['/register']">
-            <button 
-              class="login_button_sign_in" 
-              mat-raised-button>
-              Sign Up
-            </button>
-          </a>
           <button  
           class="login_button_sign_up"
           mat-raised-button>

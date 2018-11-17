@@ -3,11 +3,10 @@
     <span class = "header__icon"><i class="material-icons">local_library</i></span>
     <span class = "header__label">Student Lab 1.0</span>
     <span class = "header__spacer"></span>
-    <p class = "header_student_login">{{ user.name }} {{ user.surname }}</p>
+    <p>{{email}}</p>
     <div>
-      <a
-      [routerLink]="['/login']">
-      <button mat-flat-button class="header_button_logout">
+      <a>
+      <button mat-flat-button class="header_button_logout" (click)="onClickLogout()">
         <i class="material-icons header__icon">exit_to_app</i>
         Log out
       </button>

@@ -27,13 +27,13 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(configReg.minLenName)]],
-      surname: ['', [Validators.required, Validators.minLength(configReg.minLenName)]],
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
         Validators.minLength(configReg.minLenPassword),
-        Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]/),
+        Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d !"#$$@$!%*?&]/),
       ]],
       confirmPassword: ['', [Validators.required, passValidator]]
     });

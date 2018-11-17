@@ -5,7 +5,6 @@ interface AuthInterface {
     email: string;
     password: string;
     confirmPassword: string;
-    minLenName: number;
     minLenPassword: number;
 }
 
@@ -16,7 +15,6 @@ export const configReg: AuthInterface = {
     email: '',
     password: '',
     confirmPassword: '',
-    minLenName: 5,
     minLenPassword: 8,
   };
 

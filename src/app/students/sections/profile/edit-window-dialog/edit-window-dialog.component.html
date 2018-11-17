@@ -110,7 +110,8 @@
     mat-button 
     class="profile_dialog_button_ok"
     [disabled]="!profileDialogForm.valid" 
-    [mat-dialog-close]="profileDialogForm.value">
+    [mat-dialog-close]="profileDialogForm.value"
+    (click)="onOkClick()">
     OK
   </button>
 </div>

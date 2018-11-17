@@ -16,7 +16,10 @@
         "no-unused-expression": [
             true, 
             "allow-fast-null-checks"
+        ],
+        "max-line-length": [
+            true, 
+            140
         ]
-
     }
 }

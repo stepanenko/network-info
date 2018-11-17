@@ -1,0 +1,9 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..." >
+</mat-form-field>
+
+<app-table
+  [data]="info$"
+  [columns]="colums"
+  [filterValue]="filterStr">
+</app-table>

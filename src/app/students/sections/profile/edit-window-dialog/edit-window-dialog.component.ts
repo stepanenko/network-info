@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Student } from '../../../../students/models/student.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from '../../../../common/notifications/notification.service';
 
 @Component({
   selector: 'app-edit-window-dialog',
@@ -15,6 +16,7 @@ export class EditWindowDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditWindowDialogComponent>,
     private formBuilder: FormBuilder,
+    private notificationService: NotificationService,
     @Inject(MAT_DIALOG_DATA) public data: Student) {}
 
   ngOnInit() {
@@ -23,6 +25,11 @@ export class EditWindowDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+    this.notificationService.warningNotification('Cancel');
+  }
+
+  onOkClick(): void {
+    this.notificationService.successNotification('Submit');
   }
 
   createForm() {

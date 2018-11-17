@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../../models/student.interface';
 import { switchMap, takeWhile, filter } from 'rxjs/operators';
-import { StudentsService } from '../../../students/students.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { EditWindowDialogComponent } from './edit-window-dialog/edit-window-dialog.component';
+import { Student } from 'src/app/shared/models/student.interface';
+import { DatabaseService } from 'src/app/shared/services/db.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,15 +15,12 @@ import { EditWindowDialogComponent } from './edit-window-dialog/edit-window-dial
 export class ProfileComponent implements OnInit {
 
   selectedStudent: Student;
-  students: Student[];
   alive: boolean;
-  imgUrl: string;
   dialogRef: MatDialogRef<EditWindowDialogComponent>;
-  avatar;
   defaultAvatar = 'assets/images/students-avatars/default-avatar.png';
 
   constructor(
-    private studentsService: StudentsService,
+    private databaseService: DatabaseService,
     private route: ActivatedRoute,
     public dialog: MatDialog) { }
 
@@ -33,17 +30,11 @@ export class ProfileComponent implements OnInit {
 
   subscribeToStudent() {
     this.route.paramMap.pipe(
-      switchMap(pmap => this.studentsService.getStudent(pmap.get('id')))
+      switchMap(pmap => this.databaseService.getStudentInformation(pmap.get('id')))
    )
     .subscribe(student => {
       this.selectedStudent = student;
-      this.getAvatar();
     });
-  }
-
-  getAvatar() {
-    this.studentsService.getAvatar(this.selectedStudent.id)
-      .subscribe((data) => this.avatar = data);
   }
 
   rewriteStudentObject(result) {

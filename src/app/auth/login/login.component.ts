@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,13 +20,12 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit() {
     this.createLoginForm();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    this.authenticationService.logout();
   }
 
   createLoginForm() {
@@ -36,14 +39,14 @@ export class LoginComponent implements OnInit {
     const getValue = prop => this.loginForm.controls[prop].value;
     const emailInput = getValue('email');
     const passwordInput = getValue('password');
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.isValidUser = emailInput === user.email && passwordInput === user.password;
-    this.isValidUser && this.login(user);
+    this.authenticationService.loginEmail(emailInput, passwordInput)
+      .pipe(
+        catchError(err => {
+          this.isValidUser = false;
+          this.router.navigate(['/login']);
+          return throwError(err);
+      })
+      )
+      .subscribe(() => this.router.navigate([this.returnUrl]));
   }
-
-  login(user) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    this.router.navigate([this.returnUrl]);
-  }
-
 }

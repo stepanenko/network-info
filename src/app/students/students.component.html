@@ -2,6 +2,8 @@
 
   <div class="students__list">
     <app-students-list
+      *ngIf="listData"
+      [incomeList]="listData"
       (clickOnStudent)="listClicked($event)">
     </app-students-list>
   </div>

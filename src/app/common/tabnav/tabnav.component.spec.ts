@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TabnavComponent } from './tabnav.component';
 
 describe('TabnavComponent', () => {
@@ -8,7 +8,8 @@ describe('TabnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabnavComponent ]
+      declarations: [ TabnavComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -21,5 +22,11 @@ describe('TabnavComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit on click', () => {
+    spyOn(component.tabnavClick, 'emit');
+    component.handleTabNavClick('bar');
+    expect(component.tabnavClick.emit).toHaveBeenCalledWith('bar');
   });
 });

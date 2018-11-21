@@ -6,8 +6,8 @@
       </div>
       <div class="header_text_wrapper">
           <p class="profile_header_title header_text" *ngIf="selectedStudent.name || selectedStudent.surname; else warning">{{selectedStudent.name}} {{selectedStudent.surname}}</p>
-          <p class="profile_header_subtitle header_text" *ngIf="selectedStudent.grade; else warning">Gender: {{selectedStudent.gender}}</p>
-          <p class="profile_header_subtitle header_text" *ngIf="selectedStudent.group; else warning">Group: {{selectedStudent.group.name}}</p>
+          <p class="profile_header_subtitle header_text" *ngIf="selectedStudent.gender">Gender: {{selectedStudent.gender}}</p>
+          <p class="profile_header_subtitle header_text" *ngIf="selectedStudent.group">Group: {{selectedStudent.group.name}}</p>
       </div>
       <div class="header_button_wrapper">
         <button class="student_edit_button" mat-button (click)="onEditClick()"><mat-icon>edit</mat-icon>Edit</button>

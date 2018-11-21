@@ -8,10 +8,11 @@ import {
     MatTooltipModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './authentication.service';
 import { RegisterComponent } from './register/register.component';
+import { RolesGuard } from './guards/roles.guard';
+import { AdminGuard } from './guards/admin.guard';
 @NgModule({
     declarations: [
         LoginComponent,
@@ -28,7 +29,8 @@ import { RegisterComponent } from './register/register.component';
         RouterModule
     ],
     providers: [
-        AuthGuard,
+        RolesGuard,
+        AdminGuard,
         AuthenticationService
     ]
 })

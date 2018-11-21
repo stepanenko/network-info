@@ -1,7 +1,7 @@
 export interface Student {
   name: string;
   surname: string;
-  birthdate: string;
+  birthdate: Date;
   gender: string;
   group: {
     name: string;
@@ -10,5 +10,6 @@ export interface Student {
   email: string;
   address: string;
   image: string;
+  description: string;
   subjects: {};
 }

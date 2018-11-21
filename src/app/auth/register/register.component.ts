@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
     });
   }
   register() {
-    this.authenticationService.register((this.registerForm.value));
     this.router.navigate(['/login']);
   }
 }

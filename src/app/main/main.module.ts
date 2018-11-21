@@ -11,6 +11,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainRoutingModule } from './main-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DatabaseService } from '../shared/services/db.service';
+import { AdminComponent } from '../admin/admin.component';
+import { AdminGuard } from 'src/app/auth/guards/admin.guard';
 
 @NgModule({
   imports: [
@@ -26,11 +28,13 @@ import { DatabaseService } from '../shared/services/db.service';
     MainComponent,
     HeaderComponent,
     SidebarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AdminComponent
   ],
   exports: [ MainComponent ],
   providers: [
-    DatabaseService
+    DatabaseService,
+    AdminGuard
   ]
 })
 export class MainModule { }

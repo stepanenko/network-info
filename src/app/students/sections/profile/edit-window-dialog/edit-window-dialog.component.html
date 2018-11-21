@@ -32,17 +32,10 @@
               This field is <strong>required</strong>
             </mat-error> 
           </mat-form-field>
-          <mat-form-field>
-            <mat-select
-              placeholder="Grade" 
-              formControlName="grade">
-                <mat-option value="bachelor">bachelor</mat-option>
-                <mat-option value="master">master</mat-option>
-            </mat-select>           
-            <mat-error *ngIf="profileDialogForm.controls['grade'].hasError('required')">
-              This field is <strong>required</strong>
-            </mat-error> 
-          </mat-form-field>
+          <mat-radio-group formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>         
         </div>
         <div class="full_size_form">
           <mat-form-field>

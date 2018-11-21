@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../profile/profile.component';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material';
@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatRadioModule,
     MatSelectModule,
     HttpClientModule,
     FormsModule,

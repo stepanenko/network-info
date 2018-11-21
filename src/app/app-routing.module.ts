@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { MainComponent } from 'src/app/main/main.component';
-import { AuthGuard } from './auth/guard/auth.guard';
 import { NotFoundComponent } from './main/not-found/not-found.component';
 import { mainRoutes } from 'src/app/main/main-routing.module';
+import { RolesGuard } from './auth/guards/roles.guard';
 
 const routes: Routes = [
   { path: '',
-    canActivate: [AuthGuard],
+    canActivate: [RolesGuard],
     component: MainComponent,
     children: mainRoutes
   },

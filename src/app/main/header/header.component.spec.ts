@@ -1,14 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from './header.component';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../../auth/authentication.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
+const authServiceStub = {
+  getAuth: () => new Observable(),
+  logout: () => [{ a: undefined }]
+};
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      TestBed.configureTestingModule({
+      declarations: [ HeaderComponent ],
+      providers: [ {provide: AuthenticationService, useValue: authServiceStub} ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -22,4 +32,10 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should logout be called', fakeAsync(() => {
+    const logout = spyOn(component['authentificationService'], 'logout');
+    component.onClickLogout();
+    expect(logout).toHaveBeenCalled();
+  }));
 });

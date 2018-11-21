@@ -1,8 +1,6 @@
 
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-students-list',
@@ -11,31 +9,27 @@ import { Observable } from 'rxjs';
 })
 export class StudentsListComponent implements OnInit {
 
-  studentsRef: AngularFireList<any>;
-  students: Observable<any[]>;
-  displayedColumns: string[] = ['image', 'name'];
   studentsList: MatTableDataSource<any>;
+  searchString: string;
   activeStudent: string;
-  searchKey: string;
+  displayedColumns: string[] = ['image', 'name'];
 
+  @Input() incomeList: any[];
   @Output() clickOnStudent = new EventEmitter();
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor() {}
 
-    ngOnInit() {
+  ngOnInit() {
 
-      this.studentsRef = this.db.list('students');
-      this.studentsRef.snapshotChanges().subscribe(
-        students => {
-          const array = students.map(student => {
-            return {
-              key: student.key,
-              ...student.payload.val()
-            };
-          });
-          this.studentsList = new MatTableDataSource(array);
-        }
-      );
+    this.studentsList = new MatTableDataSource(this.incomeList);
+
+    this.studentsList
+      .filterPredicate = (value, filter: string): boolean => {
+        return value.name.toLowerCase().includes(filter) ||
+        value.surname.toLowerCase().includes(filter);
+      };
+
+    this.onTableRowClick(this.incomeList[0].key);
 
   }
 
@@ -44,13 +38,14 @@ export class StudentsListComponent implements OnInit {
     this.clickOnStudent.emit(key);
   }
 
-  applyFilter() {
-    this.studentsList.filter = this.searchKey.trim().toLowerCase();
+  applyFilter(filterValue: string) {
+    this.searchString = filterValue;
+    this.studentsList.filter = filterValue.trim().toLowerCase();
   }
 
   onSearchClear() {
-    this.searchKey = '';
-    this.applyFilter();
+    this.searchString = '';
+    this.applyFilter('');
   }
 
 }

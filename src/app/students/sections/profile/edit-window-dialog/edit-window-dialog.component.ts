@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Student } from '../../../../students/models/student.interface';
+import { Student } from 'src/app/shared/models/student.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../../../../common/notifications/notification.service';
+import { keys, reduce } from 'lodash/fp';
 
 @Component({
   selector: 'app-edit-window-dialog',
@@ -33,16 +34,17 @@ export class EditWindowDialogComponent implements OnInit {
   }
 
   createForm() {
+    const props = keys(this.data);
+    const getControl = (acc, key) => ({
+      ...acc,
+      [key]: [this.data[key],
+      [Validators.required]]
+    });
     this.profileDialogForm = this.formBuilder.group({
-      name: [this.data.name, [Validators.required]],
-      surname: [this.data.surname, [Validators.required]],
-      group: [this.data.group, [Validators.required]],
-      grade: [this.data.grade, [Validators.required]],
+      ...reduce(getControl, {})(props),
+      group: [this.data.group.name, [Validators.required]],
       email: [this.data.email, [Validators.required, Validators.email]],
-      address: [this.data.address, [Validators.required]],
-      phone: [this.data.phone, [Validators.required]],
-      birthdate: [new Date(this.data.birthdate), [Validators.required]],
-      description: [this.data.description],
+      description: [this.data.description]
     });
   }
 }

@@ -5,14 +5,14 @@
       matInput 
       autocomplete="off"
       placeholder="Search" 
-      [(ngModel)]="searchKey"
-      (keyup)="applyFilter()">
+      (keyup)="applyFilter($event.target.value)"
+      [(ngModel)]="searchString">
     <button 
       mat-button 
       matSuffix 
       mat-icon-button 
-      *ngIf="searchKey"
       aria-label="Clear"
+      *ngIf="searchString"
       (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
@@ -35,5 +35,6 @@
   <mat-row 
     *matRowDef="let student; columns: displayedColumns;"
     (click)="onTableRowClick(student.key)"
-    [class.active]="activeStudent === student.key"></mat-row>
+    [class.active]="activeStudent === student.key">
+  </mat-row>
 </mat-table>

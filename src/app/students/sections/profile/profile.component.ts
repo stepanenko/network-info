@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { switchMap, takeWhile, filter } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { EditWindowDialogComponent } from './edit-window-dialog/edit-window-dialog.component';
 import { Student } from 'src/app/shared/models/student.interface';
 import { DatabaseService } from 'src/app/shared/services/db.service';
+import { StudentsService } from '../../students.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-profile',
@@ -16,29 +17,32 @@ export class ProfileComponent implements OnInit {
 
   selectedStudent: Student;
   alive: boolean;
+  selectedStudentId: string;
   dialogRef: MatDialogRef<EditWindowDialogComponent>;
   defaultAvatar = 'assets/images/students-avatars/default-avatar.png';
 
   constructor(
+    private studentService: StudentsService,
     private databaseService: DatabaseService,
-    private route: ActivatedRoute,
     public dialog: MatDialog) { }
 
   ngOnInit() {
     this.subscribeToStudent();
+    this.subscribeToStudentId();
   }
 
   subscribeToStudent() {
-    this.route.paramMap.pipe(
-      switchMap(pmap => this.databaseService.getStudentInformation(pmap.get('id')))
-   )
+    this.studentService.selectedStudent$
     .subscribe(student => {
       this.selectedStudent = student;
     });
   }
 
-  rewriteStudentObject(result) {
-    this.selectedStudent = result;
+  subscribeToStudentId() {
+    this.studentService.studentChange$
+    .subscribe(id => {
+      this.selectedStudentId = id;
+    });
   }
 
   openDialog() {
@@ -56,7 +60,10 @@ export class ProfileComponent implements OnInit {
     .pipe(
       takeWhile(() => this.alive),
       filter(Boolean)
-      ).subscribe(value => this.rewriteStudentObject(value));
+      ).subscribe((value) => {
+        value.birthdate = moment(value.birthdate).format();
+      this.databaseService.updateSelectedStudent(this.selectedStudentId, value);
+      });
   }
 
   onEditClick() {

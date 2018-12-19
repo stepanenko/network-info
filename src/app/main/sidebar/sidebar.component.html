@@ -30,10 +30,24 @@
           class="sidebar__text">
           {{ place.name }}
         </span>
+
+        <span
+          matBadge={{unreadMsgCount}}
+          id="badge"
+          *ngIf="place.name === 'Chat'"
+          matBadgeColor="accent">
+        </span>
       </a>
-
+      
+      <div class="sidebar_hide_button">
+        <button
+          class="arrow__button"
+          [ngClass]="{active: minimized}"
+          (click)="toggleSidebar()">
+        </button>
+      </div>
     </mat-nav-list>
-
+  
   </mat-sidenav>
 
   <mat-sidenav-content>

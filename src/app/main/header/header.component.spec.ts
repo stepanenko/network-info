@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from './header.component';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthenticationService } from '../../auth/authentication.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 const authServiceStub = {
   getAuth: () => new Observable(),
-  logout: () => [{ a: undefined }]
+  logout: () => [{ a: undefined }],
+  user$: of ('Vova')
 };
 
 describe('HeaderComponent', () => {
@@ -38,4 +38,5 @@ describe('HeaderComponent', () => {
     component.onClickLogout();
     expect(logout).toHaveBeenCalled();
   }));
+
 });

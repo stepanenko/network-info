@@ -13,19 +13,21 @@ $header-button-color: rgba(48, 70, 211, 0.69);
 }
 
 .header__label,
-.header_student_login {
+.header_student_login,
+.header_application_name {
   padding: 1rem;
   color:$text-color-white;
   font-weight: bold;
   font-size: 0.8rem;
 }
 
-.header__label {
+.header_application_name {
   font-size: 1.3rem;
   font-variant: all-small-caps;
 }
 
 .header__icon{
+  vertical-align: sub;
   color: $text-color-white;
 }
 
@@ -35,7 +37,7 @@ $header-button-color: rgba(48, 70, 211, 0.69);
   color:$text-color-white;
 }
 
-.material-icons {
+.header__button_icon {
   vertical-align: middle;
 }
 
@@ -43,4 +45,26 @@ $header-button-color: rgba(48, 70, 211, 0.69);
   .header__label {
     display: none;
   }
+}
+
+.header_photo {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: #FFFFFF;
+}
+
+.chat mat-icon {
+  color: white;
+}
+
+.chat {
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+.header_santa_hat {
+  position: absolute;
+  left:197px;
+  top:4px;
 }

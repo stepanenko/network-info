@@ -10,9 +10,15 @@ import { Place } from 'src/app/main/models/place';
 export class SidebarComponent {
 
   opened = true;
-
   minimized = false;
 
   @Input()
+  unreadMsgCount: number;
+
+  @Input()
   places: Place[] = [];
+
+  toggleSidebar() {
+    this.minimized = !this.minimized;
+  }
 }

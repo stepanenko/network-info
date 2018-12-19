@@ -13,6 +13,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DatabaseService } from '../shared/services/db.service';
 import { AdminComponent } from '../admin/admin.component';
 import { AdminGuard } from 'src/app/auth/guards/admin.guard';
+import { MatSelectModule } from '@angular/material/select';
+import { ChatService } from '../chat/chat.service';
+import { MatBadgeModule } from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -22,19 +26,22 @@ import { AdminGuard } from 'src/app/auth/guards/admin.guard';
     MatIconModule,
     MainRoutingModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatBadgeModule
   ],
   declarations: [
     MainComponent,
     HeaderComponent,
     SidebarComponent,
     NotFoundComponent,
-    AdminComponent
+    AdminComponent,
   ],
   exports: [ MainComponent ],
   providers: [
     DatabaseService,
-    AdminGuard
+    AdminGuard,
+    ChatService
   ]
 })
 export class MainModule { }

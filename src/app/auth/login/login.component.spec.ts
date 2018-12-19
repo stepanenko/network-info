@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick, discardPeriodicTasks } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import {FormBuilder } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { of, Observable, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
 const activatedRouteStub = {

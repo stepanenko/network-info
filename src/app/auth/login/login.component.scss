@@ -37,14 +37,16 @@ $button-color: #f1823B;
   width: 400px;
   max-width: 100%;
   box-sizing: border-box;
-  padding: 25px;
-  margin: 8% auto 0;
   position: relative;
   z-index: 1;
-  border-top: 5px solid $primary-color;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 8% auto 0;
+}
+
+.login_inner {
+  padding: 25px;
 
   h2 {
     font-size: 1.5em;

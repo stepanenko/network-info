@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: string;
   isValidUser = true;
+  isInProgress = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,9 +40,11 @@ export class LoginComponent implements OnInit {
     const getValue = prop => this.loginForm.controls[prop].value;
     const emailInput = getValue('email');
     const passwordInput = getValue('password');
+    this.isInProgress = true;
     this.authenticationService.loginEmail(emailInput, passwordInput)
       .pipe(
         catchError(err => {
+          this.isInProgress = false;
           this.isValidUser = false;
           this.router.navigate(['/login']);
           return throwError(err);

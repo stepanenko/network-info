@@ -3,13 +3,12 @@ export interface Student {
   surname: string;
   birthdate: Date;
   gender: string;
-  group: {
-    name: string;
-  };
+  group: string;
   phone: string;
   email: string;
   address: string;
   image: string;
   description: string;
   subjects: {};
+  performance: {};
 }

@@ -1,6 +1,11 @@
 
-import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { take, filter } from 'rxjs/operators';
+
+import { DatabaseService } from 'src/app/shared/services/db.service';
+import { DialogsService } from 'src/app/common/dialogs/dialogs.service';
+import { NotificationService } from 'src/app/common/notifications/notification.service';
 
 @Component({
   selector: 'app-students-list',
@@ -9,33 +14,72 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class StudentsListComponent implements OnInit {
 
-  studentsList: MatTableDataSource<any>;
   searchString: string;
-  activeStudent: string;
-  displayedColumns: string[] = ['image', 'name'];
+  activeStudent;
+  studentsList: MatTableDataSource<any>;
+  displayedColumns: string[] = ['image', 'name', 'actions'];
+  defaultAvatar = 'assets/images/students-avatars/default-avatar.png';
 
-  @Input() incomeList: any[];
   @Output() clickOnStudent = new EventEmitter();
 
-  constructor() {}
+  constructor(
+    private service: DatabaseService,
+    private dialogs: DialogsService,
+    private notific: NotificationService
+  ) {}
+
+  allStudents = this.service.fetchStudents();
 
   ngOnInit() {
 
-    this.studentsList = new MatTableDataSource(this.incomeList);
+    this.selectDefaultStudent();
 
-    this.studentsList
-      .filterPredicate = (value, filter: string): boolean => {
-        return value.name.toLowerCase().includes(filter) ||
-        value.surname.toLowerCase().includes(filter);
-      };
+    this.allStudents.subscribe(data => {
+      this.studentsList = new MatTableDataSource(data);
 
-    this.onTableRowClick(this.incomeList[0].key);
+      this.activeStudent = data.find(stud => stud.id === this.activeStudent.id);
+      this.activeStudent && this.clickOnStudent.emit(this.activeStudent);
+
+      this.studentsList
+        .filterPredicate = (value, filterStr: string): boolean => {
+          return value.name.toLowerCase().includes(filterStr) ||
+          value.surname.toLowerCase().includes(filterStr);
+        };
+    });
 
   }
 
-  onTableRowClick(key) {
-    this.activeStudent = key;
-    this.clickOnStudent.emit(key);
+  selectDefaultStudent() {
+    this.allStudents.pipe(take(1))
+      .subscribe(data => this.onTableRowClick(data[0]));
+  }
+
+  deleteStudent(id) {
+    if (confirm('Delete this student?')) {
+      this.service.deleteStudent(id);
+      this.selectDefaultStudent();
+    }
+  }
+
+  addStudent() {
+    this.dialogs.openEditStudentDialog({title: 'Add new student'})
+      .pipe(
+        filter(Boolean)
+      )
+      .subscribe(res => {
+        this.addStudentInDB(res);
+      });
+  }
+
+  addStudentInDB(student) {
+    this.service.addStudent(student).then(
+      ok => this.notific.successNotification('User was successfully added'),
+      err => this.notific.errorNotification('Add failed :('));
+  }
+
+  onTableRowClick(student) {
+    this.activeStudent = student;
+    this.clickOnStudent.emit(student);
   }
 
   applyFilter(filterValue: string) {

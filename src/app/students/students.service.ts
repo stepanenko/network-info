@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { distinctUntilChanged, switchMap, shareReplay } from 'rxjs/operators';
 import { map as _map } from 'lodash/fp';
-
+import { map } from 'rxjs/operators';
 import { Student } from 'src/app/shared/models/student.interface';
 import { DatabaseService } from 'src/app/shared/services/db.service';
 
 @Injectable()
 export class StudentsService {
 
-  studentChange$ = new BehaviorSubject<string>('');
-  selectedStudent$: Observable<Student>;
+  selectedStudent$ = new ReplaySubject<any>(1);
+  studentChange$ = this.selectedStudent$.pipe(
+    map(student => student.id)
+  );
 
-  constructor(private db: DatabaseService) {
+  constructor(private db: DatabaseService) {}
 
-    this.selectedStudent$ = this.studentChange$.pipe(
-      distinctUntilChanged(),
-      switchMap(id => this.db.getStudent(id)),
-      shareReplay(1)
-    );
-  }
+    selectStudent(student) {
+      this.selectedStudent$.next(student);
+    }
 
-  selectStudent(id: string) {
-    this.studentChange$.next(id);
-  }
-
+    getPerformance(): Observable<any> {
+      return this.selectedStudent$.pipe(
+        switchMap(student => this.db.fetchStudentMarks(student.id))
+      );
+    }
 }

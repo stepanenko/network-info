@@ -1,32 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { StudentsService } from '../../students.service';
+
 
 @Component({
   selector: 'app-academic-performance',
   templateUrl: './academic-performance.component.html',
   styleUrls: ['./academic-performance.component.scss']
 })
-export class AcademicPerformanceComponent implements OnInit {
+export class AcademicPerformanceComponent {
 
   filterStr = '';
-  info$: Observable<any>;
+
+  data$ = this.studentService.getPerformance().pipe(
+    map(info => info.map(({mark, subject, attendance}) =>
+      ({subject: subject['name'], mark, attendance}))));
 
   colums = [
-    { key: 'subject', header: 'Course'},
-    { key: 'marks', header: 'Grade'},
-    { key: 'attendance', header: 'Attendaces'}
+    { key: 'subject', header: 'Subject'},
+    { key: 'mark', header: 'Grade'},
+    { key: 'attendance', header: 'Attendaces %'}
   ];
 
-  constructor(private studentService: StudentsService) {}
-
-  ngOnInit() {
-    this.info$ = this.studentService.selectedStudent$.pipe(
-      map(({subjects}) => subjects),
-      map((obj = {}) => Object.keys(obj).map(key => ({subject: key, ...obj[key]})))
-    );
-  }
+  constructor(private studentService: StudentsService) { }
 
   applyFilter(value: any) {
     this.filterStr = value;

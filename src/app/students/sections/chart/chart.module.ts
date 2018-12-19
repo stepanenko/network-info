@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartComponent } from './chart.component';
-import { ChartPieComponent } from 'src/app/common/charts/chart-pie/chart-pie.component';
-
+import { CommonChartModule } from 'src/app/common/charts/common-chart.module';
+import { MatCardModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
+    CommonChartModule,
+    MatCardModule
   ],
   declarations: [
     ChartComponent,
-    ChartPieComponent
   ]
 })
 export class ChartModule { }

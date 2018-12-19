@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { switchMap, takeWhile, filter } from 'rxjs/operators';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { EditWindowDialogComponent } from './edit-window-dialog/edit-window-dialog.component';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Student } from 'src/app/shared/models/student.interface';
 import { DatabaseService } from 'src/app/shared/services/db.service';
 import { StudentsService } from '../../students.service';
-import * as moment from 'moment';
+import { DialogsService } from 'src/app/common/dialogs/dialogs.service';
+import { NotificationService } from 'src/app/common/notifications/notification.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -13,26 +12,26 @@ import * as moment from 'moment';
   styleUrls: ['./profile.component.scss']
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   selectedStudent: Student;
-  alive: boolean;
   selectedStudentId: string;
-  dialogRef: MatDialogRef<EditWindowDialogComponent>;
+  subscriptionToStudent: Subscription;
   defaultAvatar = 'assets/images/students-avatars/default-avatar.png';
 
   constructor(
     private studentService: StudentsService,
     private databaseService: DatabaseService,
-    public dialog: MatDialog) { }
+    private dialogs: DialogsService,
+    private notification: NotificationService
+  ) { }
 
   ngOnInit() {
     this.subscribeToStudent();
-    this.subscribeToStudentId();
   }
 
   subscribeToStudent() {
-    this.studentService.selectedStudent$
+    this.subscriptionToStudent = this.studentService.selectedStudent$
     .subscribe(student => {
       this.selectedStudent = student;
     });
@@ -46,32 +45,24 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialogRef = this.dialog.open(EditWindowDialogComponent, {
-      disableClose: true,
-      autoFocus: true,
-      width: '600px',
-      data: {...this.selectedStudent}
+    this.dialogs.openEditStudentDialog({student: this.selectedStudent})
+    .subscribe(res => {
+      res && this.updateStudentInDB(res);
     });
-    this.alive = true;
   }
 
-  subscribeToCloseEvent() {
-    this.dialogRef.afterClosed()
-    .pipe(
-      takeWhile(() => this.alive),
-      filter(Boolean)
-      ).subscribe((value) => {
-        value.birthdate = moment(value.birthdate).format();
-      this.databaseService.updateSelectedStudent(this.selectedStudentId, value);
-      });
+  updateStudentInDB(student) {
+    this.subscribeToStudentId();
+    this.databaseService.updateStudent(this.selectedStudentId, student)
+    .then(_ => this.notification.successNotification('User was successfully updated'))
+    .catch(_ => this.notification.errorNotification('Update failed :('));
   }
 
   onEditClick() {
     this.openDialog();
-    this.subscribeToCloseEvent();
   }
 
-  onDestroy() {
-    this.alive = false;
+  ngOnDestroy() {
+    this.subscriptionToStudent.unsubscribe();
   }
 }

@@ -1,15 +1,4 @@
-export const LABELS = [
-  'Red',
-  'Orange',
-  'Yellow',
-  'Green',
-  'Blue'
-];
-
-export const BACKGROUND_COLORS = [
-  'red',
-  'orange',
-  'yellow',
-  'green',
-  'blue'
+export const COLORS = [
+  '#FF6384',
+  '#3DA5EC'
 ];

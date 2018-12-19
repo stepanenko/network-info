@@ -24,7 +24,7 @@ describe('AcademicPerformanceComponent', () => {
     fixture = TestBed.createComponent(AcademicPerformanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component.info$ = new Observable();
+    component.data$ = new Observable();
   });
 
   it('should create', () => {

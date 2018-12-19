@@ -1,6 +1,7 @@
 
 .students__wrapper {
   display: flex;
+  overflow: hidden;
 }
 
 .students__right-field {
@@ -8,5 +9,6 @@
 }
 
 .students__list {
-  min-width: 250px;
+  max-width: 260px;
+  min-width: 260px;
 }

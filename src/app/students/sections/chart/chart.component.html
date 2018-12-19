@@ -1,6 +1,27 @@
-<app-chart-pie 
-  *ngIf="data" 
-  [data]="data" 
-  [labels]="labels" 
-  [backgroundColor]="backgroundColor">
-</app-chart-pie>
+<mat-card>
+  <div class="chart__wrapper">
+    <app-common-chart 
+      *ngIf="avgMarks?.length>0 || avgAttendances?.length>0; else warning" 
+      title1="Marks"
+      title2="Attendance" 
+      chartType="line"
+      displayYAxes=true
+      chartTitle="Current student performance"
+      minYAxe=0
+      maxYAxe=100
+      fill="false"
+      [dataset1]="avgMarks"
+      [dataset2]="avgAttendances"
+      [labels]="labels"
+      [backgroundColor1]="colors[0]"
+      [backgroundColor2]="colors[1]"
+      [borderColors1]="colors[0]"
+      [borderColors2]="colors[1]">
+    </app-common-chart>
+  </div>
+  <ng-template #warning>
+    <h1 class="chart_warning_message">
+      Unknown information 
+    </h1>
+  </ng-template>
+</mat-card>

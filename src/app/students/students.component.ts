@@ -5,7 +5,6 @@ import { find } from 'lodash/fp';
 import { map } from 'rxjs/operators';
 
 import { StudentsService } from './students.service';
-import { DatabaseService } from '../shared/services/db.service';
 
 @Component({
   selector: 'app-students',
@@ -16,12 +15,10 @@ export class StudentsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: StudentsService,
-    private dbService: DatabaseService) { }
+    private service: StudentsService) { }
 
   selectedLabel$: Observable<string>;
   tabChange$ = new BehaviorSubject<string>('profile');
-  listData: any[];
 
   tabs = [
     {label: 'Profile',  path: 'profile'},
@@ -39,17 +36,10 @@ export class StudentsComponent implements OnInit {
     this.selectedLabel$ = this.tabChange$.pipe(
       map(path => find({path}, this.tabs).label)
     );
-
-    this.getStudents();
   }
 
-  getStudents() {
-    this.dbService.getStudentsList()
-      .subscribe(data => this.listData = data);
-  }
-
-  listClicked(id: string) {
-    this.service.selectStudent(id);
+  listClicked(student) {
+    this.service.selectStudent(student);
   }
 
   tabClicked(label: string) {

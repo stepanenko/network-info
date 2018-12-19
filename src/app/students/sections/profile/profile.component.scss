@@ -9,9 +9,10 @@ $text-color-dark: #4D4F5C;
 }
 
 mat-card{
-  height: 100%;
-  min-height: 500px;
-  margin: 20px;
+  height: calc(100vh - 120px);
+  margin: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .profile_header{
@@ -52,33 +53,30 @@ mat-card{
 }
 
 .profile_header_title{
-  flex-grow: 2;
-  padding: 10px 0 10px 0;
   color: $text-color-dark;
   font-size: 24px;
   font-weight: bold;
 }
 
 .profile_header_subtitle{
-  flex-grow: 1;
-  padding: 5px 0 5px 0;
   color: $text-color-dark;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .header_text{
-  padding: 0;
+  padding: 5px;
   margin: 0;
 }
 
 .student_detail_table_wrapper{
-    width: 80%;
+  width: 80%;
+  padding-bottom: 20px;
 }
 
 .student_detail_table{
   width: 100%;
   color: $text-color-dark;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .profile_fixed_fields{
@@ -86,7 +84,7 @@ mat-card{
 }
 
 .student_detail_table td{
-  padding: 10px;
+  padding: 7px;
   vertical-align: text-top;
 }
 
@@ -112,8 +110,7 @@ mat-icon{
 
 .warning_message{
   padding: 10px;
-  height: 30px;
   display: flex;
   align-items: flex-start;
-  color: red;
+  color: $primary-color;
 }

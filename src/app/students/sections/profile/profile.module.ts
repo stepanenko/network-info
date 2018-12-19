@@ -1,48 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../profile/profile.component';
-import { MatButtonModule, MatCheckboxModule, MatRadioModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
-import { MatInputModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-import { EditWindowDialogComponent } from './edit-window-dialog/edit-window-dialog.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { DialogsModule } from 'src/app/common/dialogs/dialogs.module';
+import { NotificationsModule } from 'src/app/common/notifications/notifications.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    NotificationsModule,
+    DialogsModule,
     MatCardModule,
     MatButtonModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSelectModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    MatDatepickerModule,
-    { provide: MatDialogRef, useValue: {} },
+    MatIconModule
   ],
   declarations: [
     ProfileComponent,
-    EditWindowDialogComponent
-  ],
-  entryComponents: [
-    EditWindowDialogComponent,
   ],
   exports: [ProfileComponent]
 })

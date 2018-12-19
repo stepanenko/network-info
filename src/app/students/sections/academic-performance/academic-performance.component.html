@@ -1,9 +1,18 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..." >
-</mat-form-field>
+  <div class="academic_search_table">
+    <mat-form-field class="academic_input_container">
+      <input 
+        matInput 
+        autocomplete="off"
+        placeholder="Search..."
+        (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+  </div>
 
-<app-table
-  [data]="info$"
-  [columns]="colums"
-  [filterValue]="filterStr">
-</app-table>
+  <div class="container_table">
+    <app-table
+      [data]="data$"
+      [columns]="colums"
+      [filterValue]="filterStr">
+    </app-table>
+  </div>
+

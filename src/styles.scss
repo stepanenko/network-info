@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+body {
   font-family: Verdana, Geneva, sans-serif;
 	font-size: 14px;
 	background: #f2f2f2;
@@ -17,11 +17,11 @@ body{
   background-color: #5cb85c;
 }
 
-.warning_notification{
+.warning_notification {
   background-color: #f99157;
 }
 
-.error_notification{
+.error_notification {
   background-color:#ff0000;;
 }
 
@@ -31,13 +31,9 @@ body{
 
 .search-form .mat-form-field-infix {
   border-top: 0;
+  width: 168px;
 }
 
 .search-form .mat-form-field-wrapper {
   padding-bottom: 0;
-}
-
-.search-form .mat-form-field-suffix button {
-  height: 32px;
-  width: 32px;
 }

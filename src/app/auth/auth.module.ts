@@ -5,7 +5,8 @@ import {
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressBarModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +27,7 @@ import { AdminGuard } from './guards/admin.guard';
         MatCardModule,
         MatInputModule,
         MatTooltipModule,
+        MatProgressBarModule,
         RouterModule
     ],
     providers: [

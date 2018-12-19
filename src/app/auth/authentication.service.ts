@@ -21,8 +21,7 @@ export class AuthenticationService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => user
         ? this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-        : of(null)),
-      shareReplay(1)
+        : of(null))
     );
 
     this.isAdmin$ = this.user$.pipe(

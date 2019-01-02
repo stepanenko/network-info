@@ -34,7 +34,8 @@ export class CommonChartComponent implements OnInit, OnChanges {
   @Input() private fill = 'origin';
   @Input() private legend = 'true';
   @Input() private titleFontSize = 20;
-
+  @Input() private responsive = 'true';
+  @Input() private maintainAspectRatio = 'true';
 
   chart: any;
 
@@ -62,7 +63,8 @@ export class CommonChartComponent implements OnInit, OnChanges {
 
   assembleOptions() {
     return {
-      responsive: true,
+      responsive: this.responsive,
+      maintainAspectRatio: this.maintainAspectRatio,
       title: {
         display: true,
         text: this.chartTitle,
@@ -85,7 +87,7 @@ export class CommonChartComponent implements OnInit, OnChanges {
             }
           }
         ]
-      },
+      }
     };
   }
 

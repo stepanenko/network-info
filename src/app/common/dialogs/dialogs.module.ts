@@ -9,17 +9,20 @@ import { MatCardModule, MatButtonModule, MatCheckboxModule, MatDatepickerModule,
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { ControlsService } from './controls.service';
+import { AddCourseComponent } from './add-course/add-course.component';
 import { EditAdvertisementComponent } from './edit-advertisement/edit-advertisement.component';
 
 @NgModule({
   declarations: [
     EditStudentComponent,
     EditUserComponent,
+    AddCourseComponent,
     EditAdvertisementComponent
   ],
   entryComponents: [
     EditStudentComponent,
     EditUserComponent,
+    AddCourseComponent,
     EditAdvertisementComponent
   ],
   providers: [
@@ -30,7 +33,6 @@ import { EditAdvertisementComponent } from './edit-advertisement/edit-advertisem
   imports: [
     CommonModule,
     ReactiveFormsModule,
-
     MatCardModule,
     MatButtonModule,
     MatCheckboxModule,

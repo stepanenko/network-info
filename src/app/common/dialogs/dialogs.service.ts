@@ -6,8 +6,9 @@ import { User } from 'src/app/auth/user.interface';
 import { Advertisements } from 'src/app/home/advertisements/advertisements.interface';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 import { EditAdvertisementComponent } from './edit-advertisement/edit-advertisement.component';
-
+import { Course } from 'src/app/shared/models/course.interface';
 
 @Injectable()
 export class DialogsService {
@@ -38,6 +39,13 @@ export class DialogsService {
     title = 'Edit user',
   } = {}): Observable<User | null> {
     return this.openDialog(EditUserComponent, title, user);
+  }
+
+  openAddCourseDialog({
+    student = {},
+    title = 'Add course',
+  } = {}): Observable<Course | null> {
+    return this.openDialog(AddCourseComponent, title, student);
   }
 
   openEditAdvertisementDialog({

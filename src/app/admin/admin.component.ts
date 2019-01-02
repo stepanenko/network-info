@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DialogsService } from 'src/app/common/dialogs/dialogs.service';
 import { DatabaseService } from 'src/app/shared/services/db.service';
 import { NotificationService } from 'src/app/common/notifications/notification.service';
-import { filter } from 'rxjs/operators';
+import { filter, map, switchMap, take } from 'rxjs/operators';
 import { ChatService } from '../chat/chat.service';
 
 @Component({
@@ -31,8 +31,33 @@ export class AdminComponent {
 
   addStudentInDB(student) {
     this.databaseService.addStudent(student)
-    .then(ok => this.notification.successNotification('User was successfully added'),
-    err => this.notification.errorNotification('Add failed :('));
+    .then(() => this.notification.successNotification('User was successfully added'),
+    () => this.notification.errorNotification('Add failed :('));
+  }
+
+  addCourse() {
+    const isSameCourse = one => another =>
+    one.group === another.group && one.subject === another.subject;
+    this.dialogs.openAddCourseDialog({title: 'Add new course'}).pipe(
+      filter(Boolean),
+      map(({group, subject, teacher}) => ({group: group.id, subject: subject.id, teacher: teacher.uid})),
+      switchMap(newCourse =>
+        this.databaseService.fetchCourses().pipe(
+          map(courses => courses.some(isSameCourse(newCourse))),
+          map(existed => existed ? false : newCourse)
+        )
+      ),
+      take(1),
+    ).subscribe(course => {
+      course && this.addCourseInDB(course);
+      !course && this.notification.warningNotification('This course already exists');
+    });
+  }
+
+  addCourseInDB(course) {
+    this.databaseService.addCourse(course)
+    .then(() => this.notification.successNotification('Course was successfully added'),
+    () => this.notification.errorNotification('Add failed :('));
   }
 
   clearChatHistory() {

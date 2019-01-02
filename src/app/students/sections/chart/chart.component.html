@@ -1,7 +1,7 @@
 <mat-card>
   <div class="chart__wrapper">
     <app-common-chart 
-      *ngIf="avgMarks?.length>0 || avgAttendances?.length>0; else warning" 
+      *ngIf="studentMarks?.length>0 || studentAttendance?.length>0;"
       title1="Marks"
       title2="Attendance" 
       chartType="line"
@@ -10,13 +10,13 @@
       minYAxe=0
       maxYAxe=100
       fill="false"
-      [dataset1]="avgMarks"
-      [dataset2]="avgAttendances"
-      [labels]="labels"
-      [backgroundColor1]="colors[0]"
-      [backgroundColor2]="colors[1]"
-      [borderColors1]="colors[0]"
-      [borderColors2]="colors[1]">
+      [dataset1]="studentMarks"
+      [dataset2]="studentAttendance"
+      [labels]="labelsForLineChart"
+      [backgroundColor1]="colorsForLineChart[0]"
+      [backgroundColor2]="colorsForLineChart[1]"
+      [borderColors1]="colorsForLineChart[0]"
+      [borderColors2]="colorsForLineChart[1]">
     </app-common-chart>
   </div>
   <ng-template #warning>

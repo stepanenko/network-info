@@ -25,11 +25,6 @@ export class EditAdvertisementComponent implements OnInit {
 
   createForm() {
     const names = ['title'];
-    // const requiredControls = this.controls.makeRequiredControls(this.initData.data, names);
-
-    // this.form = this.formBuilder.group({
-    //   ...requiredControls
-    // });
     this.form = this.formBuilder.group(
       this.controls.makeRequiredControls(this.initData.data, names)
     );

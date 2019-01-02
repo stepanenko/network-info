@@ -5,9 +5,6 @@ import { Subject } from 'rxjs';
 import { BACKGROUND_COLORS, BORDER_COLORS } from './dashboard.config';
 import { mean, flow, filter, map as map_  } from 'lodash/fp';
 
-
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

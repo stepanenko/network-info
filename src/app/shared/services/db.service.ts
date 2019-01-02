@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -14,7 +13,6 @@ export class DatabaseService {
 
   constructor(
     public afAuth: AngularFireAuth,
-    private db: AngularFireDatabase,
     private afs: AngularFirestore
   ) { }
 
@@ -44,9 +42,6 @@ export class DatabaseService {
 
   fetchSubject(id: string) {
     return this.fetchDoc('subjects', id);
-  }
-  fetchSubjects() {
-    return this.fetchCollection('subjects');
   }
 
   fetchTeacher(id: string) {
@@ -153,6 +148,10 @@ export class DatabaseService {
     );
   }
 
+  fetchSubjects() {
+    return this.fetchCollection('subjects');
+  }
+
   studentFromDatabase(student) {
     return {
       ...student,
@@ -170,6 +169,10 @@ export class DatabaseService {
 
   addStudent(student) {
     return this.afs.collection('students').add(this.studentToDB(student));
+  }
+
+  addCourse(course) {
+    return this.afs.collection('courses').add(course);
   }
 
   addAnnouncement(adv) {
@@ -203,6 +206,7 @@ export class DatabaseService {
       attendance: student.attendance || student.id.attendance || ''
     });
   }
+
   getAdvertisementPublisher(uid) {
     return this.afs.doc(`users/${uid}`).valueChanges();
   }

@@ -1,36 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { COLORS } from './chart.config';
-import { map, mean, keys, mapValues } from 'lodash/fp';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { COLORS1, COLORS2 } from './chart.config';
 import { StudentsService } from '../../students.service';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { map as _map } from 'lodash/fp';
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
-  avgMarks: Array<number>;
-  avgAttendances: Array<number>;
-  labels: Array<string>;
-  colors: Array<string>;
-  performance: {};
+export class ChartComponent implements OnInit, OnDestroy {
+  studentMarks: Array<number>;
+  studentAttendance: Array<number>;
+  labelsForLineChart: Array<string>;
+  colorsForLineChart: Array<string>;
+  subscription: Subscription;
 
-  constructor(
-    private studentService: StudentsService) { }
+  constructor(private studentService: StudentsService) { }
 
   ngOnInit() {
-    this.studentService.getPerformance()
-    .subscribe(performance => this.generateData(performance));
-    this.colors = COLORS;
+    this.subscription = this.studentService.getPerformance().
+      pipe(
+        map(info => info.
+          map(({mark, subject, attendance}) =>
+          ({subject: subject['name'], mark, attendance}))))
+          .subscribe (perf =>
+            this.generateDataForChart(perf)
+      );
   }
 
-  generateData(perf) {
-    const marks = map(term =>
-      map(subj => subj.mark, term), perf);
-    const attendances = map(term =>
-      map(subj => subj.attendance, term), perf);
-    this.avgMarks = map(mean, marks);
-    this.avgAttendances = map(mean, attendances);
-    this.labels = keys(perf);
+  generateDataForChart(perf) {
+    this.studentMarks = perf.map(el => el.mark);
+    this.studentAttendance = perf.map(el => el.attendance);
+    this.labelsForLineChart = perf.map(el => el.subject);
+    this.colorsForLineChart = COLORS1;
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
+    }
   }
 }

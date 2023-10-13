@@ -1,7 +1,5 @@
 
-## Network Notes
-
-Created: 11.02.2022
+# Network
 
 RPC
 ---

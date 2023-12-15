@@ -1,7 +1,7 @@
 
 # Network
 
-Computer networking may be considered a branch of computer science, computer engineering, and telecommunications since it relies on the theoretical and practical application of the related disciplines.
+Computer networking may be considered a branch of computer science, computer engineering, and telecommunications. Computer networking was influenced by a wide array of technology developments and historical milestones.
 
 The development of computer networks has a complex and gradual history, evolving over several decades. Here's a simplified overview of how computer networks started:
 

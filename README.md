@@ -5,7 +5,7 @@ Computer networking may be considered a branch of computer science, computer eng
 
 The development of computer networks has a complex and gradual history, evolving over several decades. Here's a simplified overview of how computer networks started:
 
-- Early Communication Protocols (1950s-1960s): The concept of computer networking began with early mainframe computers in the 1950s and 1960s. Computers were isolated and communication was limited.
+- Early Communication Protocols (1950s-1960s): The concept of computer networking began with early mainframe computers in the 1950s and 1960s. At this stage, computers were isolated and communication was limited.
 
 - Packet Switching (late 1960s): The idea of packet switching, a method for transmitting electronic data, was introduced. In 1969, the first successful message was sent over the ARPANET (Advanced Research Projects Agency Network), which was the precursor to the modern internet. The ARPANET used packet switching to allow multiple computers to communicate on a single network.
 

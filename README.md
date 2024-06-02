@@ -3,6 +3,10 @@
 
 Computer networking may be considered a branch of computer science, computer engineering, and telecommunications. Computer networking was influenced by a wide array of technology developments and historical milestones.
 
+## Watching
+- Practical TLS: 1,2,3 / 57
+- Introduction to Networking: 13 / 28
+
 ## [History](https://github.com/stepanenko/network-info/blob/master/HISTORY.md)
 
 ## Modern Internet
